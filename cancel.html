@@ -1,40 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Checkout canceled — WearHub</title>
-  <meta name="description" content="Your Stripe checkout was canceled. You can return to the catalog to try again.">
-  <meta name="theme-color" content="#ef4444">
+  <meta name="theme-color" content="#34d399">
   <style>
-    :root{--bg:#0b0f14;--muted:#9ca3af;--accent:#ef4444;--text:#e5e7eb;}
+    :root{--bg:#0b0f14;--muted:#9ca3af;--accent:#34d399;--accent2:#86efac;--text:#e5e7eb;}
     *{box-sizing:border-box}html,body{height:100%}
-    body{
-      margin:0;background:radial-gradient(1200px 800px at 80% -10%,rgba(239,68,68,.12),transparent),
-      radial-gradient(900px 700px at -10% 110%,rgba(239,68,68,.10),transparent),var(--bg);
+    body{margin:0;background:radial-gradient(1200px 800px at 90% -20%, rgba(52,211,153,.14), transparent),
+      radial-gradient(900px 700px at -10% 110%, rgba(134,239,172,.12), transparent),var(--bg);
       color:var(--text);font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
-      display:grid;place-items:center;padding:24px;overflow:hidden;
-    }
-    .card{width:min(720px,95vw);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 10px 40px rgba(0,0,0,.35);overflow:hidden;position:relative;z-index:2;}
-    .header{padding:28px 28px 16px;display:flex;align-items:center;gap:16px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-      background:linear-gradient(180deg,rgba(239,68,68,.15),rgba(239,68,68,.02));}
-    .logo{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
-      background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.35);}
-    .title{font-size:1.35rem;font-weight:700;letter-spacing:.2px}
-    .content{padding:26px;line-height:1.6}
-    .lead{font-size:1.1rem}.muted{color:var(--muted)}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    a.btn{appearance:none;text-decoration:none;cursor:pointer;padding:12px 16px;border-radius:12px;
-      font-weight:600;letter-spacing:.2px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(239,68,68,.16);color:#fee2e2;
-      transition:transform .08s ease,box-shadow .2s ease,background .2s ease;}
-    a.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(239,68,68,.25);}
-    .footer{padding:18px 26px;font-size:.9rem;color:var(--muted);
-      border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-    .x{color:var(--accent);width:28px;height:28px;}
-    canvas.sparkle{position:fixed;inset:0;z-index:1;pointer-events:none;}
+      display:grid;place-items:center;padding:24px;overflow:hidden;}
+    canvas.sparkle{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .card{position:relative; z-index:1; width:min(720px,95vw); background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:18px; box-shadow:0 10px 40px rgba(0,0,0,.35); overflow:hidden;}
+    .header{padding:26px 26px 14px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(52,211,153,.18), rgba(52,211,153,.02));}
+    .logo{width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:rgba(52,211,153,.22); border:1px solid rgba(52,211,153,.35);}
+    .title{font-size:1.32rem; font-weight:800; letter-spacing:.2px}
+    .content{padding:24px; line-height:1.6}
+    .lead{font-size:1.06rem}
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    a.btn{appearance:none;text-decoration:none;cursor:pointer;padding:12px 16px;border-radius:12px;font-weight:700;letter-spacing:.2px;
+      color:#052e1a; background:linear-gradient(180deg, var(--accent), var(--accent2)); border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 8px 24px rgba(52,211,153,.35); transition:transform .08s ease, box-shadow .2s ease, filter .15s ease;}
+    a.btn:hover{transform:translateY(-1px); filter:brightness(1.05);}
+    .footer{padding:16px 24px; border-top:1px solid rgba(255,255,255,.06); color:#cbd5e1; font-size:.9rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .x{width:28px; height:28px; color:#ef4444}
   </style>
 </head>
 <body>
@@ -51,32 +43,27 @@
     <div class="content">
       <p class="lead">No worries — your card wasn’t charged. You can return to the catalog and try again any time.</p>
       <div class="actions">
-        <a class="btn" href="https://discord.com/channels/1428422218215325838/1428422378047668264">Back to WearHub catalog</a>
+        <a class="btn" href="https://discord.gg/yourinvite" target="_blank" rel="noopener">Join our Discord</a>
+        <a class="btn" href="index.html">Return to main menu</a>
       </div>
-      <p class="muted" style="margin-top:10px;">If you think you were charged in error, ping the team in the server.</p>
     </div>
     <div class="footer">
-      <span>Need help? Ping the team in the server.</span>
       <span>WearHub • © <span id="y"></span></span>
+      <span style="opacity:.85">“The first automatic Discord clothes reselling server”*</span>
     </div>
   </main>
   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
-    // Floating dots
+    // dots
     const c=document.getElementById('sparkle'); const ctx=c.getContext('2d');
     let W,H,parts=[]; function resize(){W=c.width=innerWidth;H=c.height=innerHeight;}
     addEventListener('resize',resize,{passive:true}); resize();
-    const N=160, color='#ef4444';
-    for(let i=0;i<N;i++){parts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.4,vy:(Math.random()*.6+.15),r:Math.random()*1.8+.6,a:Math.random()*.5+.25})}
-    (function tick(){
-      ctx.clearRect(0,0,W,H);
-      for(const p of parts){
-        ctx.globalAlpha=p.a; ctx.fillStyle=color; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-        p.x+=p.vx; p.y+=p.vy; if(p.y>H+5){p.y=-5;p.x=Math.random()*W}
-        if(p.x<-5) p.x=W+5; if(p.x>W+5) p.x=-5;
-      }
-      requestAnimationFrame(tick);
-    })();
+    const N=160, color='#34d399';
+    for(let i=0;i<N;i++){parts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.35,vy:(Math.random()*.6+.15),r:Math.random()*1.7+.6,a:Math.random()*.45+.25})}
   </script>
 </body>
 </html>
+
+<script>
+(function(){})(); // placeholder
+</script>
