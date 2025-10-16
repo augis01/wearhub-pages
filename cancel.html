@@ -1,32 +1,66 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Checkout canceled — WearHub</title>
   <meta name="theme-color" content="#34d399">
   <style>
     :root{--bg:#0b0f14;--muted:#9ca3af;--accent:#34d399;--accent2:#86efac;--text:#e5e7eb;}
-    *{box-sizing:border-box}html,body{height:100%}
+    *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:radial-gradient(1200px 800px at 90% -20%, rgba(52,211,153,.14), transparent),
       radial-gradient(900px 700px at -10% 110%, rgba(134,239,172,.12), transparent),var(--bg);
       color:var(--text);font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
-      display:grid;place-items:center;padding:24px;overflow:hidden;}
+      display:grid;place-items:center;overflow:hidden;}
     canvas.sparkle{position:fixed; inset:0; pointer-events:none; z-index:0}
-    .card{position:relative; z-index:1; width:min(720px,95vw); background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+    .card{position:relative; z-index:1; width:min(720px,96vw); background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
       border:1px solid rgba(255,255,255,.08); border-radius:18px; box-shadow:0 10px 40px rgba(0,0,0,.35); overflow:hidden;}
-    .header{padding:26px 26px 14px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,.06);
+    .header{padding:24px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,.06);
       background:linear-gradient(180deg, rgba(52,211,153,.18), rgba(52,211,153,.02));}
     .logo{width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:rgba(52,211,153,.22); border:1px solid rgba(52,211,153,.35);}
-    .title{font-size:1.32rem; font-weight:800; letter-spacing:.2px}
-    .content{padding:24px; line-height:1.6}
-    .lead{font-size:1.06rem}
+    .title{font-size:clamp(1.1rem, 4.5vw, 1.32rem); font-weight:800; letter-spacing:.2px}
+    .content{padding:20px; line-height:1.6}
+    .lead{font-size:clamp(1rem, 3.2vw, 1.06rem)}
     .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
     a.btn{appearance:none;text-decoration:none;cursor:pointer;padding:12px 16px;border-radius:12px;font-weight:700;letter-spacing:.2px;
       color:#052e1a; background:linear-gradient(180deg, var(--accent), var(--accent2)); border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 8px 24px rgba(52,211,153,.35); transition:transform .08s ease, box-shadow .2s ease, filter .15s ease;}
+      box-shadow:0 8px 24px rgba(52,211,153,.35); transition:transform .08s ease, box-shadow .2s ease, filter .15s ease;
+      min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:8px;}
     a.btn:hover{transform:translateY(-1px); filter:brightness(1.05);}
-    .footer{padding:16px 24px; border-top:1px solid rgba(255,255,255,.06); color:#cbd5e1; font-size:.9rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .x{width:28px; height:28px; color:#ef4444}
+    .footer{padding:16px 20px; border-top:1px solid rgba(255,255,255,.06); color:#cbd5e1; font-size:.92rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    @media (max-width:480px){ .header{padding:18px} .content{padding:18px} .footer{padding:14px 18px} .logo{width:36px;height:36px} }
+    
+  /* Mobile-first responsive tweaks */
+  :root{
+    --space: 24px;
+    --radius: 18px;
+    --fs-h1: clamp(1.4rem, 4.5vw, 2.05rem);
+    --fs-lead: clamp(0.98rem, 2.7vw, 1.06rem);
+    --btn-min-h: 44px; /* iOS tap target */
+  }
+  .wrap{width:min(960px,96vw)}
+  .hero, .card{border-radius:var(--radius)}
+  h1{font-size:var(--fs-h1)}
+  .lead{font-size:var(--fs-lead)}
+  .actions a.btn{min-height:var(--btn-min-h); align-items:center; justify-content:center}
+  .actions{gap:10px}
+  .grid{grid-template-columns:1fr}
+  @media (min-width: 700px){
+    .grid{grid-template-columns: repeat(3, 1fr)}
+  }
+  @media (max-width: 480px){
+    .actions{flex-direction:column}
+    a.btn, a.btn.secondary{width:100%}
+    .hero, .card{padding:20px}
+    .header{padding:20px 20px 12px}
+    .content{padding:20px}
+    .footer{padding:14px 20px}
+  }
+  body{padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));}
+  @media (prefers-reduced-motion: reduce){
+    .sparkle{display:none !important;}
+    *{animation:none !important; transition:none !important;}
+  }
+
   </style>
 </head>
 <body>
@@ -43,27 +77,31 @@
     <div class="content">
       <p class="lead">No worries — your card wasn’t charged. You can return to the catalog and try again any time.</p>
       <div class="actions">
-        <a class="btn" href="https://discord.gg/QcAV7VsxG7" target="_blank" rel="noopener">Join our Discord</a>
+        <a class="btn" href="https://discord.gg/yourinvite" target="_blank" rel="noopener">Join our Discord</a>
         <a class="btn" href="index.html">Return to main menu</a>
       </div>
     </div>
     <div class="footer">
       <span>WearHub • © <span id="y"></span></span>
-      <span style="opacity:.85">“The first automatic Discord clothes reselling server”*</span>
+      <span style="opacity:.85">“The first automatic Discord clothes reselling server”</span>
     </div>
   </main>
   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
-    // dots
     const c=document.getElementById('sparkle'); const ctx=c.getContext('2d');
-    let W,H,parts=[]; function resize(){W=c.width=innerWidth;H=c.height=innerHeight;}
-    addEventListener('resize',resize,{passive:true}); resize();
-    const N=160, color='#34d399';
-    for(let i=0;i<N;i++){parts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.35,vy:(Math.random()*.6+.15),r:Math.random()*1.7+.6,a:Math.random()*.45+.25})}
+    let W,H,parts=[]; function resize(){W=c.width=innerWidth; H=c.height=innerHeight;}; addEventListener('resize',resize,{passive:true}); resize();
+    const small = Math.min(innerWidth, innerHeight) < 520;
+    const N = small ? 80 : 160, color='#34d399';
+    for(let i=0;i<N;i++){parts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.35,vy:(Math.random()*.6+.15),r:Math.random()*1.6+.6,a:Math.random()*.45+.25})}
+    (function tick(){
+      ctx.clearRect(0,0,W,H);
+      for(const p of parts){
+        ctx.globalAlpha=p.a; ctx.fillStyle=color; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        p.x+=p.vx; p.y+=p.vy; if(p.y>H+5){p.y=-5; p.x=Math.random()*W}
+        if(p.x<-5) p.x=W+5; if(p.x>W+5) p.x=-5;
+      }
+      requestAnimationFrame(tick);
+    })();
   </script>
 </body>
 </html>
-
-<script>
-(function(){})(); // placeholder
-</script>
